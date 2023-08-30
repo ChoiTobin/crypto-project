@@ -1,0 +1,56 @@
+
+.Price_Search{
+    display: flex;
+    width: 94%;
+    min-height: 2.5rem;
+    border: 1px solid rgb(40, 40, 80) ;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    background-color: rgb(42,46,57);
+    position:relative;
+}
+.Price_Search span{
+    border: 0px solid;
+    margin: 10px;
+}
+
+.Price_Search input{
+    background-color: rgb(42,46,57);
+    border: 0px solid;
+    outline: none;
+    color: white;
+    margin-left: 10px;
+    min-width: 80%;
+
+      
+}
+.Price_Search span img{
+   width: 16px;
+    position: absolute;
+}
+.Price_CoinTitle{
+    margin-top: 10px;
+    background-color: rgb(28,32,48);
+    width: 100%;
+    height: 5%;
+    color:gray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(40,40,80);
+    border-top: 1px solid rgb(40,40,80);
+}
+.Price_CoinHead{
+    background-color: rgb(19, 23, 24);
+    border-bottom: 1px solid rgb(40,40,80);
+    width: 100%;
+    height: 4%;
+    font-size:13px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: gray;
+
+}

@@ -1,0 +1,36 @@
+.MainPage_Nav{
+    display: flex;
+    width: 100%;
+}
+.MainPage_Left{
+    border: 1px solid rgb(40, 40, 80) ;
+    margin: 0px 10px 20px 10px;
+    height: 900px;
+    border-radius: 3px;
+    min-width: 300px;
+    width: 20%;
+    overflow-y: scroll;
+
+
+}
+.MainPage_Center{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 50%;
+}
+::-webkit-scrollbar {
+    width: 1px;  /* 세로축 스크롤바 폭 너비 */
+    height: 3px;  /* 가로축 스크롤바 폭 너비 */
+    background: rgb(46, 46, 50) ; /* 스크롤바 막대 색상 */
+ 
+
+}
+.MainPage_Right{
+    border: 1px solid rgb(40, 40, 80) ;
+    margin: 0px 10px 20px 10px;
+    height: 465px;
+    border-radius: 3px;
+
+    width: 20%;
+
+}

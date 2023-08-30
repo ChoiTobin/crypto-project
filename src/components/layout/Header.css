@@ -1,0 +1,26 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    line-height: 50px;
+    margin-bottom: 10px;
+    border-bottom: 1px rgb(40, 40, 80) solid;
+    color: white;
+    font-size: 12px;
+    width: 100vw;
+}
+
+
+.Header_Left span:nth-Child(n+2){
+    margin-left: 20px;
+    vertical-align: top;
+}
+.Header_Left_Img{
+    vertical-align: middle;
+    width: 60px;
+    height: 40px;
+}
+.Header_Left_CRYPO{
+    font-size: 20px;
+
+    font-weight: bold;
+}
