@@ -19,7 +19,7 @@ function Candle() {
 
 
 
-
+//시작
     
 
 //     if (time.length === 0) return;
