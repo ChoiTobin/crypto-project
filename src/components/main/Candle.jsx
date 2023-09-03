@@ -7,21 +7,64 @@ function Candle() {
   const [time, setTime] = useState([]);
 
   useEffect(()=>{
-    fetch('https://api.upbit.com/v1/candles/minutes/30?market=KRW-BTC&count=200')
+    fetch('https://api.upbit.com/v1/candles/minutes/30?market=KRW-BTC&count=10')
     .then((response) => response.json())
-    .then((data)=> setTime(data))
-
+    .then((data)=> {
+      console.log(data)
+      setTime(data)
+    })
 
   },[])
 
   useEffect(() => {
 
+  const width = 700;
+  const height = 470;
+  const marginBottom =50;
+  var padding = 20;
 
+  const lowPrice = d3.min(time, d => d.low_price);
+  const highPrice = d3.max(time, d => d.high_price);
+
+  const lowTime = d3.min(time, d => d.timestamp);
+  const highTime = d3.max(time, d => d.timestamp);
+
+
+  
+    const svg = d3.select(".chart")
+    .append("svg")
+    .attr("width",width)
+    .attr("height",height)
+
+    var xScale = d3.scaleLinear()
+    .domain([lowTime, highTime])
+    .range([10, width-10])
+ 
+
+    var xAxis = d3.axisBottom()
+    .scale(xScale)
+    
+
+    const gx = svg.append("g")
+    .attr("transform",`translate(0,${height - marginBottom})`)
+    .call(xAxis)
+    .selectAll("text") // x 축의 눈금 선 선택
+    .style("fill", "white"); // 눈금 선의 스타일을 흰색으로 변경
+
+    const yScale = d3.scaleLinear()
+    .domain([lowPrice, highPrice])
+    .range([height-10,10])
+
+    const yAxis = d3.axisLeft()
+    .scale(yScale)
+    
+    const gy = svg.append("g")
+    .attr("transform",`translate(${padding+50},0)`)
+    .call(yAxis)
+    
 
 
 //시작
-    
-
 //     if (time.length === 0) return;
 
 //     const width = 670
@@ -139,9 +182,11 @@ function Candle() {
 //
 
     return () => {
-      // svg.remove(); // SVG 요소를 제거하고 해당 리소스를 정리합니다.
+      svg.remove(); // SVG 요소를 제거하고 해당 리소스를 정리합니다.
     };
-  }, [time]);
+  }, [time]
+  //time이 원래는 들어간다. 아마 위에 svg.remove 풀어주면 괜찮을듯
+  );
 
 
   return (

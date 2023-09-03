@@ -1,12 +1,13 @@
-/* svg{
-background-color:rgb(13, 13, 22);
-color: rgb(20, 20, 41); 
 
-}
 .domain{
-    color: rgb(13, 13, 22);
+    color: rgb(210, 210, 216);
 }
 
 .chart{
+    overflow-x: auto;
 
-} */
+
+}
+text{
+    color: white;
+}
