@@ -4,10 +4,10 @@
 }
 
 .chart{
-    overflow-x: auto;
 
 
 }
 text{
     color: white;
+    text-anchor:end; 
 }

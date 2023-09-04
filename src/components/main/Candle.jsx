@@ -7,57 +7,68 @@ function Candle() {
   const [time, setTime] = useState([]);
 
   useEffect(()=>{
-    fetch('https://api.upbit.com/v1/candles/minutes/30?market=KRW-BTC&count=10')
+    fetch('https://api.upbit.com/v1/candles/minutes/10?market=KRW-BTC&count=60')
     .then((response) => response.json())
     .then((data)=> {
-      console.log(data)
       setTime(data)
     })
-
   },[])
 
   useEffect(() => {
-
-  const width = 700;
-  const height = 470;
+  const width = 600;
+  const height = 500;
   const marginBottom =50;
   var padding = 20;
 
   const lowPrice = d3.min(time, d => d.low_price);
   const highPrice = d3.max(time, d => d.high_price);
 
-  const lowTime = d3.min(time, d => d.timestamp);
-  const highTime = d3.max(time, d => d.timestamp);
+  const timeDate = time.map((item =>
+      new Date(item.candle_date_time_kst)))
 
 
-  
+
+      //한번에 볼 수 있게 해야할것 같은데 스크롤이아니고 줌을 통해서 데이터를 땡겨와야할듯.
+      
+
+
+    //SVG 생성
     const svg = d3.select(".chart")
     .append("svg")
     .attr("width",width)
     .attr("height",height)
 
-    var xScale = d3.scaleLinear()
-    .domain([lowTime, highTime])
-    .range([10, width-10])
- 
-
+    //x축
+    var xScale = d3.scaleTime()
+    .domain([d3.min(timeDate),d3.max(timeDate)])
+    .range([80, width-10])
+    //x축 - 데이터
     var xAxis = d3.axisBottom()
     .scale(xScale)
+    .ticks(d3.timeHour.every(1))
+    .tickFormat(d3.timeFormat("%H:%M"))// 시간 형식을 조정할 수 있습니다.
+  
     
-
+    //x축 - 축
     const gx = svg.append("g")
     .attr("transform",`translate(0,${height - marginBottom})`)
     .call(xAxis)
     .selectAll("text") // x 축의 눈금 선 선택
-    .style("fill", "white"); // 눈금 선의 스타일을 흰색으로 변경
+    .style("fill", "white") // 눈금 선의 스타일을 흰색으로 변경
 
+    //x축 - 그룹화 ,style
+
+    //y축
     const yScale = d3.scaleLinear()
     .domain([lowPrice, highPrice])
-    .range([height-10,10])
+    .range([height-100,10])
+    
 
+
+    //y축
     const yAxis = d3.axisLeft()
     .scale(yScale)
-    
+    //y축 그룹화
     const gy = svg.append("g")
     .attr("transform",`translate(${padding+50},0)`)
     .call(yAxis)
