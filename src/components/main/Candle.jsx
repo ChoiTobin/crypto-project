@@ -37,6 +37,8 @@ function Candle() {
     .append("svg")
     .attr("width",width)
     .attr("height",height)
+    .attr("class", "svg_box"); // 클래스  추가
+
 
     //x축
     var xScale = d3.scaleTime()
@@ -55,7 +57,6 @@ function Candle() {
     .call(xAxis)
     .selectAll("text") // x 축의 눈금 선 선택
     .style("fill", "white") // 눈금 선의 스타일을 흰색으로 변경
-
     //x축 - 그룹화 ,style
 
     //y축
@@ -63,8 +64,6 @@ function Candle() {
     .domain([lowPrice, highPrice])
     .range([height-100,10])
     
-
-
     //y축
     const yAxis = d3.axisLeft()
     .scale(yScale)
@@ -72,8 +71,32 @@ function Candle() {
     const gy = svg.append("g")
     .attr("transform",`translate(${padding+50},0)`)
     .call(yAxis)
-    
 
+    //막대바 만들기 - g그룹요소 만든다-ract만들기 width hight만들기 도메인 transform으로 방향 변환해주기
+    //https://operstu1.tistory.com/162 참고
+
+
+const rect =time.map(item => item.candle_acc_trade_volume)
+d3.select(".svg_box") // svg 요소 선택
+  .selectAll("rect")
+  .data(rect) // 문자열을 숫자로 변환
+  .enter()
+  .append("rect")
+  .attr("y", function(d, i) {
+    return i * 8.3+90;
+  })
+  .attr("x",function(d,i){
+    return -height+51
+  })
+  .attr("width", function (d){
+    return d
+  } ) // 픽셀 단위 너비 설정
+  .attr("height", "5")
+  .style("fill", "red") // 배경색 설정
+  .style("transform", "rotate(-90deg)");
+  
+
+  
 
 //시작
 //     if (time.length === 0) return;
