@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import { scaleBand, scaleLinear } from 'd3';
-import "../main/Candle2.css"
-function Candle2() {
+import "../main/Candle_Right.css"
+function Candle_Right() {
 
 //하단 거래량 , x,y좌표
 const [time, setTime] = useState([]);
@@ -65,7 +65,7 @@ useEffect(() => {
   );
 }
 
-export default Candle2;
+export default Candle_Right;
 
 
 

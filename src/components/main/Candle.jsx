@@ -2,13 +2,10 @@ import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import '../main/Candle.css';
 import { scaleBand, scaleLinear } from 'd3';
-import Candle2 from './Candle2';
 function Candle() {
 
-//하단 거래량 , x,y좌표
 const [time, setTime] = useState([]);
 
-//0.data 받아옴
 useEffect(()=>{
     fetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
     .then((response) => response.json())
@@ -23,7 +20,6 @@ useEffect(() => {
   const svgHeight = 570
   
 
-//1.chart에 svg추가 svg = widht = 600 , height = 400
   const svg = d3.select('.chart')
     .append("svg")
     .attr("width",svgWidth)
@@ -32,7 +28,6 @@ useEffect(() => {
 
 
   
-//2.svg에 그룹 요소 추가 : width height x y위치 
 const margin = {top:20,right:20,left:100,bottom:100}
 const groupWidth = 1000 - margin.left - margin.right
 const groupHeight = 400 -margin.top - margin.bottom
@@ -42,7 +37,6 @@ const groupHeight = 400 -margin.top - margin.bottom
 
   
 
-  //막대 차트
   const chartGroup = svg.append('g')
   .attr('width', groupWidth)
   .attr('height', groupHeight)

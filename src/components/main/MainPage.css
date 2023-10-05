@@ -1,6 +1,13 @@
 .MainPage_Nav{
-    display: flex;
+    /* display: flex;
+    width: 100%; */
+    display: grid;
     width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-template-areas: 
+    "left center Right"
+    "left right .";
 }
 .MainPage_Left{
     border: 1px solid rgb(40, 40, 80) ;
@@ -10,13 +17,28 @@
     min-width: 300px;
     width: 20%;
     overflow-y: scroll;
-
+    grid-area:left;
 
 }
 .MainPage_Center{
     width: 500px;
-    height: 50%;
+    height:100%;
     overflow-x: scroll;
+    grid-area:center;
+
+}
+.MainPage_Center_Right{
+
+    grid-area:Right;
+}
+
+.MainPage_Right{
+    border: 1px solid rgb(40, 40, 80) ;
+    margin: 0px 10px 20px 10px;
+    height: 100vh;
+    border-radius: 3px;
+    width: 100%;
+    grid-area:right;
 
 }
 
@@ -33,15 +55,4 @@
     background: rgb(194, 194, 210) ; /* 스크롤바 막대 색상 */
  
 }
-.MainPage_Right{
-    border: 1px solid rgb(40, 40, 80) ;
-    margin: 0px 10px 20px 10px;
-    height: 465px;
-    border-radius: 3px;
-    width: 20%;
 
-}
-.MainPage_Center_Right{
-    width: 20%;
-
-}
