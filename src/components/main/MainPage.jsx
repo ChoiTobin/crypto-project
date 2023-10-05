@@ -2,6 +2,7 @@ import Candle from './Candle'
 import { Price } from './Price'
 import { Layout } from '../layout/Layout'
 import { OrderBook } from './OrderBook';
+import Candle2 from './Candle2';
 import '../main/MainPage.css';
 export const MainPage = () => {
 
@@ -13,12 +14,16 @@ export const MainPage = () => {
           <Price/>
         </div>
         <div className='MainPage_Center'>
-          <Candle/>
+            <Candle/>
         </div>
-        <div className='MainPage_Right'>
-          <OrderBook/>
+        <div className='MainPage_Center_Right'>
+            <Candle2/>
         </div>
-      </div>
+          <div className='MainPage_Right'>
+            <OrderBook/>
+          </div>
+        </div>
+
         
     </Layout>
     </>

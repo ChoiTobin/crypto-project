@@ -14,23 +14,34 @@
 
 }
 .MainPage_Center{
-    overflow-y: hidden;
-    overflow-x: hidden;
+    width: 500px;
     height: 50%;
+    overflow-x: scroll;
+
 }
-::-webkit-scrollbar {
-    width: 1px;  /* 세로축 스크롤바 폭 너비 */
-    height: 3px;  /* 가로축 스크롤바 폭 너비 */
+
+.MainPage_Left::-webkit-scrollbar {
+    width: 5px;  /* 세로축 스크롤바 폭 너비 */
+    height: 10px;  /* 가로축 스크롤바 폭 너비 */
     background: rgb(46, 46, 50) ; /* 스크롤바 막대 색상 */
  
 
+}
+.MainPage_Center::-webkit-scrollbar-thumb{
+    width: 3px;
+    height: 1px;  /* 가로축 스크롤바 폭 너비 */
+    background: rgb(194, 194, 210) ; /* 스크롤바 막대 색상 */
+ 
 }
 .MainPage_Right{
     border: 1px solid rgb(40, 40, 80) ;
     margin: 0px 10px 20px 10px;
     height: 465px;
     border-radius: 3px;
+    width: 20%;
 
+}
+.MainPage_Center_Right{
     width: 20%;
 
 }
