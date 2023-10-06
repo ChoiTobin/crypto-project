@@ -3,11 +3,13 @@
     width: 100%; */
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: 420px 520px 70px 320px;
+    ; /* 각 열의 너비를 200px로 고정 */
+    grid-template-rows: 600px 300px; /* 각 행의 높이를 100px로 고정 */
     grid-template-areas: 
     "left center Center_Right right"
-    "left center Center_Right .";
+    "left center Center_Right NewsPage";
+    overflow:auto;
 }
 .MainPage_Left{
     border: 1px solid rgb(40, 40, 80) ;
@@ -38,6 +40,9 @@
     border-radius: 3px;
     grid-area:right;
 
+}
+.MainPage_NewsPage{
+    grid-area:NewsPage;
 }
 
 .MainPage_Left::-webkit-scrollbar {

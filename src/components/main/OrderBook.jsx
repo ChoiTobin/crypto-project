@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import NewsPage from './NewsPage';
 
 
 export const OrderBook = () => {
@@ -58,8 +59,9 @@ const labels =[];
 
 time.map((item)=>{return (
   priceArr.push(item.trade_price),
-  labels.push(item.candle_date_time_utc.substr(12))
+  labels.push(item.candle_date_time_kst.substr(11))
   )})
+  console.log(labels)
 const data = {
   labels,
   datasets: [
@@ -75,8 +77,8 @@ const data = {
 
   return (
     <>
-      <Line options={options} data={data} />;
-      
+      <Line options={options} data={data}  />;
+      <NewsPage/>
 
     </>
   )
