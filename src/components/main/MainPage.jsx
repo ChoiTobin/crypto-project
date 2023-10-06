@@ -4,6 +4,7 @@ import { Layout } from '../layout/Layout'
 import { OrderBook } from './OrderBook';
 import CandleRight from './Candle_Right';
 import '../main/MainPage.css';
+
 export const MainPage = () => {
 
   return (
@@ -19,13 +20,11 @@ export const MainPage = () => {
           <div className='MainPage_Center_Right'>
               <CandleRight/>
           </div>
-
+          <div>
+          </div>
           <div className='MainPage_Right'>
               <OrderBook/>
           </div>
-
-
-
         </div>
     </Layout>
     </>
