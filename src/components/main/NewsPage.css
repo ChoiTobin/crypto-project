@@ -1,7 +1,10 @@
 
-.test{
-    overflow-y: scroll;
-}
 .NewsPageParrent{
     color: white;
+
+
+}
+.NewsPage_overflow-y{
+    height: 400px;
+    overflow-y: scroll;
 }

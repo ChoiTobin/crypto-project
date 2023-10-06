@@ -27,6 +27,7 @@ function NewsPage() {
 
   return (
     <>
+      <div className='NewsPage_overflow-y'>
      {
           newsData?.articles.map((item)=>{
             return(
@@ -48,7 +49,8 @@ function NewsPage() {
             )
           })
         }  
-    
+      </div>
+
     </>
   );
 }

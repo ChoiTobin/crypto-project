@@ -26,9 +26,7 @@ export const MainPage = () => {
           <div className='MainPage_Right'>
               <OrderBook/>
           </div>
-          <div className='MainPage_NewsPage'>
-            <NewsPage/>
-          </div>
+
         </div>
     </Layout>
     </>
