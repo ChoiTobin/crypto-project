@@ -1,5 +1,7 @@
 import React from 'react'
 import './OrderBook.css'
+import { useEffect, useState } from 'react';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +15,20 @@ import {
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
+
+export const OrderBook = () => {
+  const [time, setTime] = useState([]);
+  
+  useEffect(()=>{
+    fetch('https://api.upbit.com/v1/candles/minutes/60?market=KRW-BTC&count=3')
+    .then((response) => response.json())
+    .then((data)=> {
+      setTime(data)
+    })
+  },[])
+  console.log(time)
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,7 +39,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+ const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -36,32 +52,31 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
+const priceArr =[] 
+const labels =[];
+
+time.map((item)=>{return (
+  priceArr.push(item.trade_price),
+  labels.push(item.candle_date_time_utc.substr(12))
+  )})
+const data = {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      label: 'BTC',
+      data: priceArr,
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
+
   ],
 };
-export const OrderBook = () => {
+
   return (
     <>
-
-
-                <Line options={options} data={data} />;
-
+      <Line options={options} data={data} />;
+      
 
     </>
   )
