@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import '../main/Candle.css';
 import { scaleBand, scaleLinear } from 'd3';
+import Apis from '../../share/Apis';
 function Candle() {
 
 const [time, setTime] = useState([]);
 
 useEffect(()=>{
-    fetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
-    .then((response) => response.json())
-    .then((data)=> {
-      setTime(data)
-    })
+  Apis.CandleFetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
+  .then((data)=> {
+    setTime(data)
+  })
   },[])
 
 useEffect(() => {

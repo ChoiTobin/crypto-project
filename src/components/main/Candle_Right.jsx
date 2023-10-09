@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import { scaleBand, scaleLinear } from 'd3';
 import "../main/Candle_Right.css"
+import Apis from '../../share/Apis';
 function Candle_Right() {
 
 //하단 거래량 , x,y좌표
@@ -9,8 +10,7 @@ const [time, setTime] = useState([]);
 
 //0.data 받아옴
 useEffect(()=>{
-    fetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
-    .then((response) => response.json())
+  Apis.CandleRightFetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
     .then((data)=> {
       setTime(data)
     })

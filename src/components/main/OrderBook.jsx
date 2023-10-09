@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import Apis from '../../share/Apis';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import NewsPage from './NewsPage';
@@ -21,13 +22,11 @@ export const OrderBook = () => {
   const [time, setTime] = useState([]);
   
   useEffect(()=>{
-    fetch('https://api.upbit.com/v1/candles/minutes/60?market=KRW-BTC&count=3')
-    .then((response) => response.json())
-    .then((data)=> {
-      setTime(data)
-    })
+    Apis.OrderBookFetch('https://api.upbit.com/v1/candles/minutes/60?market=KRW-BTC&count=3')
+      .then((data)=> {
+        setTime(data)
+      })
   },[])
-  console.log(time)
 
 
 ChartJS.register(
@@ -61,7 +60,6 @@ time.map((item)=>{return (
   priceArr.push(item.trade_price),
   labels.push(item.candle_date_time_kst.substr(11))
   )})
-  console.log(labels)
 const data = {
   labels,
   datasets: [
