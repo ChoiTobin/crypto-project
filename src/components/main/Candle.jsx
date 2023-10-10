@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import '../main/Candle.css';
 import { scaleBand, scaleLinear } from 'd3';
-import Apis from '../../share/Apis';
+import Apis from '../../share/Api/Apis';
 function Candle() {
 
 const [time, setTime] = useState([]);
 
 useEffect(()=>{
-  Apis.CandleFetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-BTC&count=100')
+  Apis.CandleFetch('http://localhost:3000/candle')
   .then((data)=> {
     setTime(data)
   })

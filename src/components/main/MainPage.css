@@ -1,6 +1,7 @@
 .MainPage_Nav{
     /* display: flex;
     width: 100%; */
+    justify-content: space-between;
     display: grid;
     width: 100%;
     grid-template-columns: 420px 520px 70px 320px;

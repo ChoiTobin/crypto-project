@@ -22,11 +22,13 @@ export const Header = () => {
               Others
             </span>
         </div>
-        <div className='Header_Right'>
-              <span>이미지</span>
-              <span>이미지</span>
-              <span>이미지</span>
+        <div>
+
         </div>
+        <div>
+          
+        </div>
+        
       </header>
    
   )

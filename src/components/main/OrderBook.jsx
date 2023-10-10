@@ -12,7 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import Apis from '../../share/Apis';
+import Apis from '../../share/Api/Apis';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import NewsPage from './NewsPage';
@@ -22,7 +22,7 @@ export const OrderBook = () => {
   const [time, setTime] = useState([]);
   
   useEffect(()=>{
-    Apis.OrderBookFetch('https://api.upbit.com/v1/candles/minutes/60?market=KRW-BTC&count=3')
+    Apis.OrderBookFetch('http://localhost:3000/order')
       .then((data)=> {
         setTime(data)
       })

@@ -4,7 +4,6 @@ import { Layout } from '../layout/Layout'
 import { OrderBook } from './OrderBook';
 import CandleRight from './Candle_Right';
 import '../main/MainPage.css';
-import NewsPage from './NewsPage';
 
 export const MainPage = () => {
 
