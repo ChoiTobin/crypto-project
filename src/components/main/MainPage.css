@@ -27,7 +27,6 @@
     height:570px;
     overflow-x: scroll;
     grid-area:center;
-    border: 2px solid rgb(40, 40, 80);
     
 }
 .MainPage_Center_Right{

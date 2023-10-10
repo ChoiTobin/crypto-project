@@ -26,7 +26,6 @@ export const MainPage = () => {
           <div className='MainPage_Right'>
               <OrderBook/>
           </div>
-
         </div>
     </Layout>
     </>

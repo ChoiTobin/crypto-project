@@ -10,6 +10,7 @@ export const Apis = {
 
     OrderBookFetch : (OrderBookFetch) => fetch(OrderBookFetch)
                 .then((response) => response.json()),
+    //page이름+Fetch = 매개변수 같게
 }
 
 export default Apis
