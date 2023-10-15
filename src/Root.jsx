@@ -1,10 +1,9 @@
-import React from 'react';
 import { RecoilRoot } from 'recoil';
-import Main from "./main"
+import Main from './main';
 function Root() {
   return (
     <RecoilRoot>
-            <Main />
+      <Main />
     </RecoilRoot>
   );
 }

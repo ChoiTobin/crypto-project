@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 export function useWebSocket() {
-    const [coinData, setCoinData] = useState({});
+  const [coinData, setCoinData] = useState({});
 
   useEffect(() => {
     const ws = new WebSocket('wss://api.upbit.com/websocket/v1');
@@ -12,34 +12,37 @@ export function useWebSocket() {
       ws.send(
         JSON.stringify([
           { ticket: 'test example' },
-          { type: 'ticker', codes: [
-
-          'KRW-BTC', 
-          'KRW-ETH',
-          'KRW-XRP',
-          'KRW-EOS',
-          'KRW-LTC',
-          'KRW-DOT'
-          ,'KRW-BNB'
-          ,'KRW-XLM'
-          ,'KRW-LINK'
-          ,'KRW-BCH'
-          ,'KRW-DOGE'
-          ,'KRW-SOL'
-          ,'KRW-UNI'
-          ,'KRW-XTZ'
-          ,'KRW-AAVE'
-          ,'KRW-ATOM'
-          ,'KRW-VET'
-          ,'KRW-XMR'
-          ,'KRW-TRX'
-          ,'KRW-NEO'
-          ,'KRW-ALGO'
-          ,'KRW-MKR'
-          ,'KRW-EGLD'
-          ,'KRW-CRO'] },
-          { format: 'DEFAULT' }
-        ])
+          {
+            type: 'ticker',
+            codes: [
+              'KRW-BTC',
+              'KRW-ETH',
+              'KRW-XRP',
+              'KRW-EOS',
+              'KRW-LTC',
+              'KRW-DOT',
+              'KRW-BNB',
+              'KRW-XLM',
+              'KRW-LINK',
+              'KRW-BCH',
+              'KRW-DOGE',
+              'KRW-SOL',
+              'KRW-UNI',
+              'KRW-XTZ',
+              'KRW-AAVE',
+              'KRW-ATOM',
+              'KRW-VET',
+              'KRW-XMR',
+              'KRW-TRX',
+              'KRW-NEO',
+              'KRW-ALGO',
+              'KRW-MKR',
+              'KRW-EGLD',
+              'KRW-CRO',
+            ],
+          },
+          { format: 'DEFAULT' },
+        ]),
       );
     };
 
@@ -53,7 +56,6 @@ export function useWebSocket() {
           const { code } = receivedData;
           return { ...prevData, [code]: receivedData };
         });
-
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }

@@ -17,19 +17,38 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "recoil": "^0.7.7",
-    "swiper": "^10.3.1",
     "ws": "^8.13.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.1.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss": "^8.4.31",
+    "prettier": "2.8.8",
     "react-router-dom": "^6.14.2",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "object-curly-newline": 0
+    },
+    "env": {
+      "browser": true
+    }
   }
 }
