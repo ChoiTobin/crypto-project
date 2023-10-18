@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { newsRecoil } from '../../share/recoil/recoilState';
+import styled from 'styled-components';
 
 const NewsDetail = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const NewsDetail = () => {
     return (
       <Layout>
         <div>
-          <div className="text-xl text-white">News Not Found</div>
+          <NewsDetailContainer>News Not Found</NewsDetailContainer>
         </div>
       </Layout>
     );
@@ -24,35 +25,63 @@ const NewsDetail = () => {
 
   return (
     <Layout>
-      <div>
-        <div className="text-xl text-white font-bold mb-4">
-          {filteredNews.title}
-        </div>
-        <div className="flex text-md text-white flex-col items-center md:flex-row ">
-          <div className="md:mr-4">
-            <img
-              className="w-35 h-32 object-cover"
-              src={filteredNews.urlToImage}
-              alt="이미지 설명"
-            />
-          </div>
+      <NewsDetailContainer>{filteredNews.title}</NewsDetailContainer>
+      <NewsContent>
+        <NewsImage src={filteredNews.urlToImage} alt="이미지 설명" />
+        <div>
+          <div>{filteredNews.content}</div>
           <div>
-            <div className="mb-3">{filteredNews.content}</div>
-            <div className="text-sm mb-3 text-gray-500">
+            <AuthorPublished>
               <div>Author: {filteredNews.author}</div>
               <div>Published At: {filteredNews.publishedAt}</div>
-            </div>
-            <Link
-              className="bg-blue-500 text-white py-2 px-3 rounded"
-              to={filteredNews.url}
-            >
-              상세보기 URL
-            </Link>
+            </AuthorPublished>
+            <StyledLink to={filteredNews.url}>상세보기 URL</StyledLink>
           </div>
         </div>
-      </div>
+      </NewsContent>
     </Layout>
   );
 };
 
 export default NewsDetail;
+const NewsDetailContainer = styled.div`
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 1rem;
+`;
+
+const NewsImage = styled.img`
+  width: 8.75rem;
+  height: 8rem;
+  object-fit: cover;
+  margin-right: 1rem;
+`;
+
+const NewsContent = styled.div`
+  font-size: 1rem;
+  color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+const AuthorPublished = styled.div`
+  font-size: 0.875rem;
+  color: #a0a0a0;
+  margin-bottom: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  background-color: #3498db;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  display: inline-block;
+`;
