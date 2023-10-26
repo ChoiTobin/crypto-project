@@ -1,152 +1,31 @@
 .MainPage_Nav{
-    /* display: flex;
-    width: 100%; */
-    justify-content: space-between;
-    display: grid;
     width: 100%;
-    grid-template-columns: 420px 520px 70px 320px;
-    ; /* 각 열의 너비를 200px로 고정 */
-    grid-template-rows: 600px 300px; /* 각 행의 높이를 100px로 고정 */
-    grid-template-areas: 
-    "left center Center_Right right"
-    "left center Center_Right NewsPage";
+    justify-content: space-between;
     overflow:auto;
 }
 .MainPage_Left{
+    width: 100%;
     border: 1px solid rgb(40, 40, 80) ;
     margin: 0px 10px 20px 10px;
     height: 100vh;
     border-radius: 3px;
-    min-width: 400px;
-    width: 20%;
     overflow-y: scroll;
-    grid-area:left;
+ 
 
 }
-.MainPage_Center{
-    width: 500px;
-    height:570px;
-    overflow-x: scroll;
-    grid-area:center;
-    
-}
-.MainPage_Center_Right{
-    grid-area:Center_Right;
-}
-
 .MainPage_Right{
-    border: 1px solid rgb(40, 40, 80) ;
+    width: 100%;
+    display: flex;
+    border: 1px solid rgb(40,40,80);
     margin: 0px 10px 20px 10px;
     border-radius: 3px;
-    grid-area:right;
+
 
 }
-.MainPage_NewsPage{
-    grid-area:NewsPage;
-}
-
 .MainPage_Left::-webkit-scrollbar {
     width: 5px;  /* 세로축 스크롤바 폭 너비 */
     height: 10px;  /* 가로축 스크롤바 폭 너비 */
     background: rgb(46, 46, 50) ; /* 스크롤바 막대 색상 */
- 
 
 }
-.MainPage_Center::-webkit-scrollbar-thumb{
-    width: 3px;
-    height: 1px;  /* 가로축 스크롤바 폭 너비 */
-    background: rgb(194, 194, 210) ; /* 스크롤바 막대 색상 */
- 
-}
 
-
-/* 노트북 & 테블릿 가로 (해상도 1024px ~ 1279px)*/ 
-@media all and (min-width:1024px) and (max-width:1279px) { 
-  } 
-  
-  /* 테블릿 가로 (해상도 768px ~ 1023px)*/ 
-  @media all and (min-width:768px) and (max-width:1023px) { 
-  } 
-  
-  /* 모바일 가로 & 테블릿 세로 (해상도 480px ~ 767px)*/ 
-  @media all and (min-width:480px) and (max-width:767px) {
-    .MainPage_Nav{
-        /* display: flex;
-        width: 100%; */
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: repeat(3,1fr);
-        grid-template-areas: 
-        "left left left"
-        "left left left"
-        "center center Right";
-    }
-    .MainPage_Left{
-        border: 1px solid rgb(40, 40, 80) ;
-        margin: 0px 10px 20px 10px;
-        height: 90vh;
-        border-radius: 3px;
-        min-width: 370px;
-        width: 100vw;
-        overflow-y: scroll;
-        grid-area:left;
-    
-    }
-    .MainPage_Center{
-        display: none;
-
-    }
-    .MainPage_Center_Right{
-        display: none;
-
-    
-    }
-    
-    .MainPage_Right{
-        display: none;
-        grid-area:right;
- 
-    
-    }
-    .Header_Left_Img{
-        display: none;
-    }
-    .Header_Right{
-        display: none;
-    }
-  } 
-  
-  /* 모바일 세로 (해상도 ~ 479px)*/ 
-  @media all and (max-width:479px) {
-    .MainPage_Left{
-        border: 1px solid rgb(40, 40, 80) ;
-        margin: 0px 10px 20px 10px;
-        height: 100vh;
-        border-radius: 3px;
-        min-width: 370px;
-        width: 100%;
-        overflow-y: scroll;
-        grid-area:left;
-    
-    }
-    .MainPage_Center{
-        display: none;
-    }
-    .MainPage_Center_Right{
-    
-        display: none;
-    }
-    
-    .MainPage_Right{
-
-        display: none;
- 
-    
-    }
-    .Header_Left_Img{
-        display: none;
-    }
-    .Header_Right{
-        display: none;
-    }
-  }

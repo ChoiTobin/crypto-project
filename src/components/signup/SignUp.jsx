@@ -10,7 +10,7 @@ export default function SignUp() {
   });
   const navigate = useNavigate();
 
-  const idRegEx = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+  const idRegEx = /^[a-zA-Z0-9]{8,20}$/;
   const pwRegEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!])[^\s]{8,20}$/;
 
   const idResult = idRegEx.test(initdata.nickname);
@@ -67,9 +67,19 @@ export default function SignUp() {
     })
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem('access_token', data.accessToken);
-        localStorage.setItem('refresh_token', data.refreshToken);
-        handleClickSignin();
+        if (data.status === 409) {
+          alert('중복된 아이디 입니다.');
+          setinitdata({
+            nickname: '',
+            password: '',
+            passwordCheck: '',
+          });
+        } else {
+          localStorage.setItem('access_token', data.accessToken);
+          localStorage.setItem('refresh_token', data.refreshToken);
+          alert('회원가입 완료됬습니다.');
+          handleClickSignin();
+        }
       })
       .catch((error) => {
         console.error('데이터를 보내는 중 에러가 발생했습니다:', error);
@@ -98,6 +108,10 @@ export default function SignUp() {
               onChange={InputTextHandler}
             />
           </InputBox>
+
+          {idResult === true ? null : (
+            <IdCheckColor>8-20자 영문 또는 숫자</IdCheckColor>
+          )}
           <InputBox>
             <Input
               placeholder="Password"
@@ -107,6 +121,9 @@ export default function SignUp() {
               onChange={InputTextHandler}
             />
           </InputBox>
+          {pwResult === true ? null : (
+            <PwCheckColor>8-20자 소문자,대문자,숫자,특문 포함</PwCheckColor>
+          )}
           <InputBox>
             <Input
               placeholder="Password Check"
@@ -116,6 +133,9 @@ export default function SignUp() {
               onChange={InputTextHandler}
             />
           </InputBox>
+          {initdata.password === initdata.passwordCheck ? null : (
+            <PwCheck2Color>패스워드가 같지 않습니다.</PwCheck2Color>
+          )}
           <ButtonBox>
             <Button onClick={SubmitHandler}>Sign Up</Button>
           </ButtonBox>
@@ -220,4 +240,22 @@ const FluxText = styled.div`
   line-height: 9vw;
   text-shadow: 0 0 3vw #2356ff;
   animation: ${fluxAnimation} 2s linear infinite;
+`;
+
+const IdCheckColor = styled.div`
+  color: orange;
+  opacity: 0.6;
+  font-size: 11px;
+`;
+
+const PwCheckColor = styled.div`
+  color: orange;
+  opacity: 0.6;
+  font-size: 11px;
+`;
+const PwCheck2Color = styled.div`
+  color: orange;
+  opacity: 0.6;
+  font-size: 11px;
+  margin-bottom: 10px;
 `;

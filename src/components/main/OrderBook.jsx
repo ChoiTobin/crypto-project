@@ -20,6 +20,7 @@ export const OrderBook = () => {
 
   useEffect(() => {
     Apis.OrderBookFetch('http://localhost:3000/order').then((data) => {
+      console.log('데이터 확인 ', data);
       setTime(data);
     });
   }, []);
@@ -35,7 +36,7 @@ export const OrderBook = () => {
   );
 
   const options = {
-    responsive: true,
+    responsive: false,
     plugins: {
       legend: {
         position: 'top',
@@ -70,8 +71,8 @@ export const OrderBook = () => {
 
   return (
     <>
-      <Line options={options} data={data} />;
-      <NewsPage />
+      <Line style={{ width: '50%' }} options={options} data={data} />;
+      <NewsPage style={{ width: '50%' }} />
     </>
   );
 };

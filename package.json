@@ -14,8 +14,10 @@
     "d3": "^7.8.5",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-google-charts": "^4.0.1",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.0",
     "ws": "^8.13.0"

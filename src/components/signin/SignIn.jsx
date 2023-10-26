@@ -10,7 +10,7 @@ export default function SignIn() {
     password: '',
   });
 
-  const idRegEx = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
+  const idRegEx = /^[a-zA-Z0-9]{8,20}$/;
   const pwRegEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!])[^\s]{8,20}$/;
 
   const idResult = idRegEx.test(initdata.nickname);
@@ -31,11 +31,12 @@ export default function SignIn() {
   };
 
   const ApiAuthFetch = () => {
-    // @@DB로 api요청
+    const accessToken = localStorage.getItem('access_token');
     fetch('http://localhost:3000/auth/signin', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // JSON 데이터를 보낸다고 명시
+        authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         Id: initdata.nickname,
@@ -47,6 +48,8 @@ export default function SignIn() {
         console.log(data);
         if (data.status == 200) {
           navigate('/');
+        } else {
+          alert(data.error);
         }
       })
       .catch((error) => {
@@ -76,6 +79,10 @@ export default function SignIn() {
               onChange={InputTextHandler}
             />
           </InputBox>
+
+          {idResult === true ? null : (
+            <IdCheckColor>8-20자 영문 또는 숫자</IdCheckColor>
+          )}
           <InputBox>
             <Input
               placeholder="Password"
@@ -85,6 +92,9 @@ export default function SignIn() {
               onChange={InputTextHandler}
             />
           </InputBox>
+          {pwResult === true ? null : (
+            <PwCheckColor>8-20자 소문자,대문자,숫자,특문 포함</PwCheckColor>
+          )}
 
           <ButtonBox>
             <Button onClick={SubmitHandler}>Sign In</Button>
@@ -98,7 +108,7 @@ export default function SignIn() {
               cursor: 'pointer',
             }}
           >
-            회원가입
+            회원가입 아직 안하셨나요?
           </div>
         </Box>
       </ContainerBox>
@@ -188,4 +198,16 @@ const FluxText = styled.div`
   line-height: 9vw;
   text-shadow: 0 0 3vw #2356ff;
   animation: ${fluxAnimation} 2s linear infinite;
+`;
+const IdCheckColor = styled.div`
+  color: orange;
+  opacity: 0.6;
+  font-size: 11px;
+`;
+
+const PwCheckColor = styled.div`
+  color: orange;
+  opacity: 0.6;
+  font-size: 11px;
+  margin-bottom: 10px;
 `;

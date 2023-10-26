@@ -1,7 +1,7 @@
 import '../main/Price.css';
 import Search from '../../../public/Search.png';
 import { PriceSocket } from './PriceSocket.jsx';
-
+import { useState } from 'react';
 export const INFO_LIST = [
   { id: 1, content: '★' },
   { id: 2, content: 'BTC' },
@@ -10,15 +10,20 @@ export const INFO_LIST = [
   { id: 5, content: 'USDT' },
   { id: 6, content: 'DAI' },
 ];
+
 // 함수 안에 뒀을때 리렌더 될때 마다 변수가 새로 항당 될 수 있어서 밖이나 파일 분리
 export const Price = () => {
+  const [FilterState, setFilterState] = useState('');
+  const TextFilterFC = (e) => {
+    setFilterState(e.target.value);
+  };
   return (
     <>
       <div className="Price_Search">
         <span>
           <img src={Search} />
         </span>
-        <input placeholder="Search"></input>
+        <input onChange={(e) => TextFilterFC(e)} placeholder="Search"></input>
       </div>
       <div className="Price_CoinTitle">
         {INFO_LIST.map((info) => {
@@ -34,7 +39,7 @@ export const Price = () => {
         <div>Price</div>
         <div>%</div>
       </div>
-      <PriceSocket />
+      <PriceSocket data={FilterState} />
     </>
   );
 };

@@ -51,6 +51,8 @@ function NewsPage() {
 const NewsContainer = styled.div`
   height: 400px;
   overflow-y: scroll;
+  border: 1px solid rgb(40, 40, 80);
+
   position: relative;
 `;
 
