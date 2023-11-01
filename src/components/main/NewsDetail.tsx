@@ -1,14 +1,20 @@
 import { Layout } from '../layout/Layout';
+import * as React from 'react';
+
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { newsRecoil } from '../../share/recoil/recoilState';
 import styled from 'styled-components';
-
+import { ApiResponse } from './tsmodule';
 const NewsDetail = () => {
+  
+
+  
   const { id } = useParams();
-  const [newsData] = useRecoilState(newsRecoil);
-  const filteredNews = newsData.find((item) => item.author === id);
+  const [newsData,setNewsData] = useRecoilState<ApiResponse[]>(newsRecoil);
+
+  const filteredNews : ApiResponse | undefined = newsData.find((item) => item.author === id);
 
   if (!filteredNews) {
     // 예외 처리: 해당 ID에 맞는 뉴스를 찾을 수 없는 경우

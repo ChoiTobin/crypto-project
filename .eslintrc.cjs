@@ -1,5 +1,8 @@
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
@@ -17,4 +20,4 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-}
+};

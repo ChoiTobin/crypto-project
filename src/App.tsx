@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MainPage } from './components/main/MainPage';
 import NewsDetail from './components/main/NewsDetail';

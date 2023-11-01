@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+
 import styled from 'styled-components'; // styled-components를 import합니다.
-import Apis from '../../share/api/Apis';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { newsRecoil } from '../../share/recoil/recoilState';
-
+import axios from 'axios';
+import { ApiResponse } from './tsmodule';
 function NewsPage() {
   const navigate = useNavigate();
-  const [newsData, setNewsData] = useState(null);
-  const [state, setState] = useRecoilState(newsRecoil);
+  const [newsData, setNewsData] = useState<ApiResponse[]>([]);
+  const [state, setState] = useRecoilState<ApiResponse[]>(newsRecoil);
 
   useEffect(() => {
-    Apis.NewsPageFetch('http://localhost:3000/news')
-      .then((data) => {
+    axios
+      .get('http://localhost:3000/news')
+      .then((response) => {
+        const data = response.data;
         setState(data);
         setNewsData(data);
       })
@@ -21,7 +25,7 @@ function NewsPage() {
       });
   }, []);
 
-  function NewsNavigate(id, author) {
+  function NewsNavigate (id:string, author:string):any {
     return navigate(`/news/${author}/${id}`);
   }
 

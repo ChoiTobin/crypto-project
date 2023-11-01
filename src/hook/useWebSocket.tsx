@@ -1,5 +1,6 @@
 // useWebSocket.js
 import { useEffect, useState } from 'react';
+import * as React from 'react';
 
 export function useWebSocket() {
   const [coinData, setCoinData] = useState({});
