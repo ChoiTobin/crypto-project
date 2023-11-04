@@ -247,14 +247,17 @@ const Container = styled.div`
 
 const neonAnimation = keyframes`
   0%, 100% {
-    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+    transform: translateZ(1px) translate(0, 0) scale(1.01);
+    text-shadow: 0 0 1px #FA1C16, 0 0 3px #FA1C16, 0 0 10px #FA1C16, 0 0 10px #FA1C16, 0 0 0.04px #FED128, 0.5px 0.5px 0.1px #806914;
     color: #FED128;
   }
   50% {
-    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+    transform: translateZ(1px) translate(0, 0) scale(1.01);
+    text-shadow: 0 0 0.05px #800E0B, 0 0 0.15px #800E0B, 0 0 0.5px #800E0B, 0 0 0.5px #800E0B, 0 0 0.02px #800E0B, 0.5px 0.5px 0.1px #40340A;
     color: #806914;
   }
 `;
+
 
 const NeonText = styled.div`
   font-family: neon;

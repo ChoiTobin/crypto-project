@@ -1,5 +1,7 @@
 import * as React from 'react';
-import Search from '../../../public/Search.png';
+import Search from '../../../public/SearchChange.png';
+import LazyLoad from 'react-lazyload'
+
 import { PriceSocket } from './PriceSocket.jsx';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -22,7 +24,11 @@ export const Price:React.FC = () => {
     <>
       <PriceSearch>
         <SearchIcon>
+        <LazyLoad>
+
           <SearchIconImage src={Search} />
+          </LazyLoad>
+
         </SearchIcon>
         <SearchInput
           onChange={(e) => TextFilterFC(e)}

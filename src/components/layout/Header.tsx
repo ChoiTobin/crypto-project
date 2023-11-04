@@ -1,13 +1,15 @@
 import './Header.css';
 import * as React from 'react';
-import Titleimg from '../../../public/TitleImg.png';
-
+import TitleimgChange from '../../../public/TitleImgChange.png';
+import LazyLoad from 'react-lazyload'
 export const Header = () => {
   return (
     <header className="Header">
       <div className="Header_Left">
         <span className="Header_Left_CRYPO">
-          <img className="Header_Left_Img" src={Titleimg} />
+          <LazyLoad>
+          <img className="Header_Left_Img" src={TitleimgChange} />
+          </LazyLoad>
           CRYPO
         </span>
         <span>Exchange</span>

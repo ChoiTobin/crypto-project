@@ -60,3 +60,4 @@ const MainPageRight = styled.div`
   margin: 0px 10px 20px 10px;
   border-radius: 3px;
 `;
+export default MainPage

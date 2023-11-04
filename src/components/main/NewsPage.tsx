@@ -99,4 +99,4 @@ const NewsTime = styled.div`
   color: rgb(178, 175, 175);
 `;
 
-export default NewsPage;
+export default React.memo(NewsPage)

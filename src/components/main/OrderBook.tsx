@@ -70,3 +70,5 @@ export const OrderBook = () => {
     </>
   );
 };
+
+export default React.memo(OrderBook);

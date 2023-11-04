@@ -9,6 +9,7 @@ export function useWebSocket() {
     const ws = new WebSocket('wss://api.upbit.com/websocket/v1');
 
     ws.onopen = () => {
+      
       console.log('connected!');
       ws.send(
         JSON.stringify([
@@ -72,3 +73,5 @@ export function useWebSocket() {
   }, []);
   return coinData;
 }
+
+

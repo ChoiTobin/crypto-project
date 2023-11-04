@@ -27,7 +27,7 @@ export const PriceSocket:React.FC <PriceSocketProps> = ({ data }) => {
   // filter 함수를 사용하여 조건에 맞는 데이터만 반환합니다.
   const filteredCoinData = filterData(coinData, data); // 필터된 데이터를 저장
 
-  const renderCoinData = (coin:any):React.ReactNode => {
+  const renderCoinData =  (coin:any):React.ReactNode => {
     if (!coin) return null;
 
     return (
@@ -41,6 +41,8 @@ export const PriceSocket:React.FC <PriceSocketProps> = ({ data }) => {
       </PriceSocketLine>
     );
   };
+
+
   const floatCal = (item:number):React.ReactNode => {
     if (item * 100 > 0) {
       return <div style={{ color: 'green' }}>{(item * 100).toFixed(2)}%</div>;
@@ -61,9 +63,7 @@ export const PriceSocket:React.FC <PriceSocketProps> = ({ data }) => {
   const sandChart = (coinData:any) => {
     const { code } = coinData;
 
-    setTimeout(() => {
       apiPost(code);
-    }, 500);
   };
 
   return (
@@ -76,7 +76,6 @@ export const PriceSocket:React.FC <PriceSocketProps> = ({ data }) => {
     </PriceSocketBody>
   );
 };
-
 const PriceSocketBody = styled.div`
   color: white;
   font-size: 13px;
@@ -92,3 +91,4 @@ const PriceSocketLine = styled.div`
     background-color: rgb(54, 54, 54);
   }
 `;
+
