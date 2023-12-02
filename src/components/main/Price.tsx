@@ -26,7 +26,7 @@ export const Price:React.FC = () => {
         <SearchIcon>
         <LazyLoad>
 
-          <SearchIconImage src={Search} />
+          <SearchIconImage src={Search} alt='searchImage' />
           </LazyLoad>
 
         </SearchIcon>
@@ -55,12 +55,12 @@ export const Price:React.FC = () => {
 };
 const PriceSearch = styled.div`
   display: flex;
-  width: 94%;
+  width: 95%;
+  top:5px;
   min-height: 2.5rem;
   border: 1px solid rgb(40, 40, 80);
   border-radius: 5px;
-  margin-left: 5px;
-  margin-top: 10px;
+  margin:0 auto;
   background-color: rgb(42, 46, 57);
   position: relative;
 `;

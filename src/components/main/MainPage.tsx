@@ -33,31 +33,21 @@ export const MainPage = () => {
 };
 
 const MainPageNav = styled.div`
-  width: 100%;
   justify-content: space-between;
-  overflow: auto;
   display: flex;
 `;
 
 const MainPageLeft = styled.div`
   width: 50%;
+  height:100vh;
   border: 1px solid rgb(40, 40, 80);
-  margin: 0px 10px 20px 10px;
-  height: 100vh;
   border-radius: 3px;
   overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 10px;
-    background: rgb(46, 46, 50);
-  }
 `;
 
 const MainPageRight = styled.div`
   width: 50%;
-  border: 1px solid rgb(40, 40, 80);
-  margin: 0px 10px 20px 10px;
+  height:100vh;
   border-radius: 3px;
 `;
 export default MainPage

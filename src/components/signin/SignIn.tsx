@@ -1,8 +1,8 @@
 import * as React from 'react';
+import styled, { keyframes } from 'styled-components'; // styled-components를 import합니다.
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components'; // styled-components를 import합니다.
 import axios from 'axios';
 export default function SignIn() {
   interface propsLogin {
@@ -132,6 +132,8 @@ const ContainerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color:black;
+
 `;
 const Box = styled.div`
   width: 30%;
