@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil'; // RecoilRoot를 import
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //https://velog.io/@dbswpgur2/Recoil-React-Query
 ReactDOM.createRoot(document.getElementById('root')).render(
