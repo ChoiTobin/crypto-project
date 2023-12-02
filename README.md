@@ -9,8 +9,7 @@ react
 recoil
 express 
 mysql
-<br>
-4.기능<br>
+<br>4.기능<br>
 로그인,회원가입,이미지업로드,차트,검색기능,페이지네이션등
 
 
