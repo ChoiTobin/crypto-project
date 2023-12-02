@@ -82,6 +82,7 @@ const PriceSocketBody = styled.div`
 `;
 
 const PriceSocketLine = styled.div`
+  
   display: flex;
   justify-content: space-between;
   padding: 20px;

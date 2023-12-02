@@ -1,8 +1,7 @@
+import styled, { keyframes } from 'styled-components'; // styled-components를 import합니다.
 import { useState } from 'react';
 import * as React from 'react';
-
 import { useNavigate } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components'; // styled-components를 import합니다.
 import axios from 'axios';
 export default function SignUp() {
   interface propsSignUp {
@@ -60,38 +59,6 @@ export default function SignUp() {
     }
   };
 
-  // const ApiAuthFetch = () => {
-  //   fetch('http://localhost:3000/auth', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json', // JSON 데이터를 보낸다고 명시
-  //     },
-  //     body: JSON.stringify({
-  //       Id: initdata.nickname,
-  //       Pw: initdata.password,
-  //       PwC: initdata.passwordCheck,
-  //     }), // 요청 본문 설정
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.status === 409) {
-  //         alert('중복된 아이디 입니다.');
-  //         setinitdata({
-  //           nickname: '',
-  //           password: '',
-  //           passwordCheck: '',
-  //         });
-  //       } else {
-  //         localStorage.setItem('access_token', data.accessToken);
-  //         localStorage.setItem('refresh_token', data.refreshToken);
-  //         alert('회원가입 완료됬습니다.');
-  //         handleClickSignin();
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('데이터를 보내는 중 에러가 발생했습니다:', error);
-  //     });
-  // };
 
   const ApiAuthFetch = async () => {
     try {
@@ -119,6 +86,7 @@ export default function SignUp() {
           passwordCheck: '',
         });
       } else {
+        localStorage.setItem('id',data.id);
         localStorage.setItem('access_token', data.accessToken);
         localStorage.setItem('refresh_token', data.refreshToken);
         alert('회원가입 완료됬습니다.');
@@ -205,6 +173,7 @@ const ContainerBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color:black;
 `;
 const Box = styled.div`
   width: 30%;

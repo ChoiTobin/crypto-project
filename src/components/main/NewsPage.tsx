@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
 import styled from 'styled-components'; // styled-components를 import합니다.
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { newsRecoil } from '../../share/recoil/recoilState';
 import axios from 'axios';
 import { ApiResponse } from './tsmodule';
-function NewsPage() {
+const NewsPage =() =>{
   const navigate = useNavigate();
-  const [newsData, setNewsData] = useState<ApiResponse[]>([]);
   const [state, setState] = useRecoilState<ApiResponse[]>(newsRecoil);
 
   useEffect(() => {
@@ -18,7 +16,6 @@ function NewsPage() {
       .then((response) => {
         const data = response.data;
         setState(data);
-        setNewsData(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -26,44 +23,64 @@ function NewsPage() {
   }, []);
 
   function NewsNavigate (id:string, author:string):any {
+    
     return navigate(`/news/${author}/${id}`);
+  }
+  const PagePlusFC=()=>{
+    axios
+    .post('http://localhost:3000/newsPagePlus')
+    .then((response)=>{
+      const data = response.data;
+      setState(data)
+
+    }).catch((err) => {
+      console.log(err.message);
+    });
   }
 
   return (
     <>
+
       <NewsContainer>
         <NewsTitle>Crypto News</NewsTitle>
-        {newsData &&
-          newsData.map((item) => {
+
+        {state &&
+          state.map((item,index) => {
             return (
               <NewsParent
                 key={item.id}
                 onClick={() => NewsNavigate(item.id, item.author)}
               >
-                <NewsContent>{item.title}</NewsContent>
+                <NewsContent>{index}.{item.title}</NewsContent>
                 <div>
                   <NewsAuthor>{item.author}</NewsAuthor>
                   <NewsTime>{item.publishedAt}</NewsTime>
                 </div>
               </NewsParent>
+              
             );
           })}
+          <NewsPagePlusComponents onClick={()=> PagePlusFC()} >View more</NewsPagePlusComponents>
       </NewsContainer>
     </>
   );
 }
 const NewsContainer = styled.div`
-  height: 400px;
   overflow-y: scroll;
   border: 1px solid rgb(40, 40, 80);
-
   position: relative;
+  height:65vh;
 `;
-
+const NewsPagePlusComponents = styled.div`
+color:pink;
+text-align:center;
+margin:30px;
+cursor: pointer;
+`
 const NewsTitle = styled.div`
   border-top: 1px solid rgb(40, 40, 80);
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   color: rgb(124, 124, 127);
   padding: 10px;
   border-bottom: 1px solid rgb(40, 40, 80);
@@ -72,7 +89,7 @@ const NewsTitle = styled.div`
 const NewsParent = styled.div`
   color: white;
   border-bottom: 1px solid rgb(40, 40, 80);
-  padding: 40px;
+  padding: 20px;
 
   &:hover {
     background-color: rgb(99, 97, 97);
@@ -81,22 +98,22 @@ const NewsParent = styled.div`
 
 const NewsContent = styled.div`
   width: 100%;
-  height: 30px;
-  font-size: 15px;
-  overflow-y: hidden;
+  font-size: 12px;
   text-align: center;
+  cursor: pointer;
+
 `;
 
 const NewsAuthor = styled.div`
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
   color: rgb(178, 146, 146);
 `;
 
 const NewsTime = styled.div`
   text-align: center;
-  font-size: 12px;
-  color: rgb(178, 175, 175);
+  font-size: 10px;
+  color: green;
 `;
 
 export default React.memo(NewsPage)
